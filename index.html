@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Device Diagnostic & Advisory Engine</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BACKGROUND FUTURISTIK MESH & GRID -->
+    <div class="bg-glow-container">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="bg-grid-overlay"></div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 1. SPLASH SCREEN                           -->
+    <!-- ========================================== -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo-wrapper">
+                <div class="splash-logo-pulse"></div>
+                <div class="splash-logo">⚡</div>
+            </div>
+            
+            <h1 class="splash-title">AI Device Advisor</h1>
+            <p class="splash-subtitle">Engine v1.0 • Powered by Gemini AI</p>
+
+            <div class="splash-status-container">
+                <p id="splash-status-text" class="status-fade">Initializing Diagnostic Engine...</p>
+            </div>
+
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. HALAMAN UTAMA                          -->
+    <!-- ========================================== -->
+    <main id="main-content" class="main-content hidden">
+        <div class="container">
+            
+            <!-- HEADER APP -->
+            <header class="app-header fade-up">
+                <div class="logo-badge">
+                    <span class="pulse-dot"></span>
+                    Transparent AI Advisor Active
+                </div>
+                <h2>AI Device Advisor</h2>
+                <p class="header-subtitle">Analisis sistematis & edukasi teknis berbasis fakta browser & pola penggunaan</p>
+            </header>
+
+            <!-- BROWSER READABLE DATA (TRANSPARENT & HONEST) -->
+            <section class="card glass-card fade-up stagger-1">
+                <div class="card-header">
+                    <h3>📱 Informational Telemetry (Browser Context)</h3>
+                    <span class="status-badge-green">🟢 Valid Browser Context</span>
+                </div>
+                <div class="device-grid">
+                    <div class="device-item">
+                        <span class="device-label">📱 Platform / OS</span>
+                        <span id="info-os" class="device-value">Membaca...</span>
+                    </div>
+                    <div class="device-item">
+                        <span class="device-label">🌐 Browser Client</span>
+                        <span id="info-browser" class="device-value">Membaca...</span>
+                    </div>
+                    <div class="device-item">
+                        <span class="device-label">🧠 RAM (Estimasi Browser API)</span>
+                        <span id="info-ram" class="device-value">Membaca...</span>
+                    </div>
+                    <div class="device-item">
+                        <span class="device-label">⚙️ Logika CPU Cores</span>
+                        <span id="info-cpu" class="device-value">Membaca...</span>
+                    </div>
+                    <div class="device-item full-width">
+                        <span class="device-label">📶 Status Koneksi Network</span>
+                        <span id="info-connection" class="device-value">Membaca...</span>
+                    </div>
+                </div>
+                <div class="transparency-note">
+                    🔒 <strong>Transparansi Privasi:</strong> Browser web tidak memiliki akses langsung ke sensor hardware asli (seperti suhu baterai aktual atau pemakaian CPU % secara real-time) demi alasan keamanan.
+                </div>
+            </section>
+
+            <!-- DIAGNOSTIC INPUT FORM -->
+            <section id="form-section" class="card glass-card fade-up stagger-2">
+                <div class="card-header">
+                    <h3>🎮 Pola Penggunaan & Kondisi Perangkat</h3>
+                </div>
+
+                <form id="diagnostic-form">
+                    <!-- Pertanyaan 1: Aktivitas -->
+                    <div class="form-group">
+                        <label class="form-label">🔥 Aktivitas harian yang paling sering dilakukan: <small>(Bisa pilih > 1)</small></label>
+                        <div class="checkbox-grid">
+                            <label class="chip-item"><input type="checkbox" value="TikTok"> 🎵 TikTok</label>
+                            <label class="chip-item"><input type="checkbox" value="Instagram"> 📸 Instagram</label>
+                            <label class="chip-item"><input type="checkbox" value="Facebook"> 💙 Facebook</label>
+                            <label class="chip-item"><input type="checkbox" value="YouTube"> 🎥 YouTube</label>
+                            <label class="chip-item"><input type="checkbox" value="WhatsApp"> 💬 WhatsApp</label>
+                            <label class="chip-item"><input type="checkbox" value="Mobile Legends"> ⚔️ Mobile Legends</label>
+                            <label class="chip-item"><input type="checkbox" value="Free Fire"> 🎯 Free Fire</label>
+                            <label class="chip-item"><input type="checkbox" value="PUBG Mobile"> 🪂 PUBG Mobile</label>
+                            <label class="chip-item"><input type="checkbox" value="Editing Video"> 🎬 Editing Video</label>
+                        </div>
+                    </div>
+
+                    <!-- Pertanyaan 2: Sisa Memori -->
+                    <div class="form-group">
+                        <label class="form-label">📂 Sisa Penyimpanan Internal (Sesuai Info Pengaturan HP):</label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="storage" value="Kurang dari 5 GB" required> 🚨 Sangat Kritis (< 5 GB)</label>
+                            <label class="radio-item"><input type="radio" name="storage" value="5–10 GB"> ⚠️ Mulai Pengetatan (5–10 GB)</label>
+                            <label class="radio-item"><input type="radio" name="storage" value="10–20 GB"> 🟡 Cukup Aman (10–20 GB)</label>
+                            <label class="radio-item"><input type="radio" name="storage" value="Lebih dari 20 GB"> 🟢 Sangat Lapang (> 20 GB)</label>
+                        </div>
+                    </div>
+
+                    <!-- Pertanyaan 3: Kondisi HP -->
+                    <div class="form-group">
+                        <label class="form-label">🌡️ Sensasi Suhu Fisik Perangkat Saat Digunakan:</label>
+                        <div class="radio-grid">
+                            <label class="radio-item"><input type="radio" name="heat" value="Normal" required> ❄️ Adem / Normal</label>
+                            <label class="radio-item"><input type="radio" name="heat" value="Hangat"> 🌤️ Hangat Sedang</label>
+                            <label class="radio-item"><input type="radio" name="heat" value="Panas"> 🔥 Panas Terasa</label>
+                            <label class="radio-item"><input type="radio" name="heat" value="Sangat Panas"> 🌋 Panas Menyengat</label>
+                        </div>
+                    </div>
+
+                    <!-- Pertanyaan 4: Lama Penggunaan -->
+                    <div class="form-group">
+                        <label class="form-label">⏱️ Durasi Sesi Penggunaan Tanpa Istirahat:</label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="duration" value="Kurang dari 30 menit" required> ⚡ Singkat (< 30 Menit)</label>
+                            <label class="radio-item"><input type="radio" name="duration" value="30–60 menit"> ⌛ Sedang (30–60 Menit)</label>
+                            <label class="radio-item"><input type="radio" name="duration" value="1–3 jam"> 🕒 Panjang (1–3 Jam)</label>
+                            <label class="radio-item"><input type="radio" name="duration" value="Lebih dari 3 jam"> 🔋 Maraton (> 3 Jam)</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary ripple-btn">
+                        <span>MULAI ANALISIS TEKNIS</span>
+                        <span class="btn-glow"></span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- 3. LOADING ANALYSIS                        -->
+            <!-- ========================================== -->
+            <section id="ai-loading" class="card glass-card hidden">
+                <div class="loading-content">
+                    <div class="spinner-wrapper">
+                        <div class="spinner"></div>
+                        <div class="spinner-center">🧠</div>
+                    </div>
+                   <h4 class="loading-title">Menganalisis Jawaban Anda...</h4>
+                    
+                    <div class="loading-bar-wrapper">
+                        <div id="analysis-progress" class="loading-bar-fill"></div>
+                    </div>
+
+                    <ul class="loading-steps">
+                        <li id="step-1" class="step-item"><span class="step-icon">⏳</span> Membaca informasi perangkat</li>
+                        <li id="step-2" class="step-item"><span class="step-icon">⏳</span> Menghitung skor berdasarkan jawaban Anda</li>
+                        <li id="step-3" class="step-item"><span class="step-icon">⏳</span> Mengirim data ke AI untuk dianalisis<</li>
+                        <li id="step-4" class="step-item"><span class="step-icon">⏳</span> Menunggu respons dari Gemini AI</li>
+                        <li id="step-5" class="step-item"><span class="step-icon">⏳</span> Menyusun hasil akhir</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- 4. DASHBOARD HASIL AI (PROFESIONAL & FACTUAL)-->
+            <!-- ========================================== -->
+            <section id="dashboard-result" class="hidden">
+                
+                <!-- Health Index Card -->
+                <div class="card glass-card result-header-card fade-up">
+                    <div class="card-header-center">
+                        <span class="badge-mini">Estimated Health Index</span>
+                    </div>
+
+                    <div class="score-circle-container">
+                        <div class="circle-outer">
+                            <span id="res-score" class="score-number">0</span>
+                            <span class="score-total">/100</span>
+                        </div>
+                        <div class="status-pill-container">
+                            <p id="res-health-status" class="status-pill green">🟢 Optimal</p>
+                        </div>
+                    </div>
+
+                    <!-- Diagnosis Summary -->
+                    <div class="diagnosis-summary-box">
+                        <span class="summary-title">📝 Diagnosis Summary</span>
+                        <p id="res-summary-text">
+                            Berdasarkan kombinasi informasi browser dan jawaban yang diberikan, AI menyimpulkan bahwa kendala pada perangkat Anda berasal dari faktor pengelolaan penyimpanan internal dan beban durasi aplikasi.
+                        </p>
+                    </div>
+
+                    <!-- Section 3: Mengapa AI Menyimpulkan Demikian? -->
+                    <div class="reasoning-box">
+                        <h4 class="box-subtitle">🔍 Mengapa AI Menyimpulkan Demikian?</h4>
+                        <ul id="res-reasoning-list" class="reasoning-list">
+                            <!-- Populated dynamically via JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 6: AI Insight Personal -->
+                <div class="card glass-card ai-insight-card fade-up">
+                    <h3>🧠 AI Insight & Analytical Assessment</h3>
+                    <p id="res-ai-insight">
+                        <!-- Populated dynamically via JS -->
+                    </p>
+                </div>
+
+                <!-- Section 7: Jika Dibiarkan (Konsekuensi Teknis) -->
+                <div class="card glass-card consequence-card fade-up">
+                    <h3>⚠️ Potensi Konsekuensi (Jika Kondisi Dibiarkan)</h3>
+                    <ul id="res-consequences-list" class="consequence-list">
+                        <!-- Populated dynamically via JS -->
+                    </ul>
+                </div>
+
+                <!-- Rekomendasi Solusi Berstruktur -->
+                <div class="card glass-card fade-up">
+                    <h3>🛠️ Action Plan & Rekomendasi Solusi</h3>
+                    <div id="res-solutions" class="checklist-group">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Section 5: Myth vs Fact -->
+                <div class="card glass-card myth-card fade-up">
+                    <div class="myth-header">
+                        <span class="myth-badge">Myth vs Fact</span>
+                        <h4>💡 Klarifikasi Mitos Hardware</h4>
+                    </div>
+                    <div class="myth-body">
+                        <p class="myth-text"><strong>❌ MITOS:</strong> <span id="res-myth-text">...</span></p>
+                        <p class="fact-text"><strong>🟢 FAKTA TEKNIS:</strong> <span id="res-fact-text">...</span></p>
+                    </div>
+                </div>
+
+                <!-- Section 4: Edukasi Singkat & Hari Ini Anda Belajar -->
+                <div class="card glass-card education-card fade-up">
+                    <div class="edu-header">
+                        <span>🎓 Hari Ini Anda Belajar</span>
+                    </div>
+                    <h4 id="res-edu-title" class="edu-title">Mekanisme NAND Flash & Wear Leveling</h4>
+                    <p id="res-edu-desc" class="edu-desc">
+                        Penjelasan teknis tentang bagaimana komponen bekerja...
+                    </p>
+                    <div class="edu-takeaway">
+                        <strong>📌 Takeaway Utama:</strong> <span id="res-edu-takeaway">...</span>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- 5. CHATBOT CONSULTANT                      -->
+                <!-- ========================================== -->
+                <div class="card glass-card chatbot-card fade-up">
+                    <div class="chatbot-header">
+                        <div class="chat-bot-avatar">🤖</div>
+                        <div>
+                            <h3>AI Technical Advisor Chat</h3>
+                            <p class="chatbot-sub">Konsultasikan pertanyaaan teknis seputar perangkat Anda</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Question Chips -->
+                    <div class="quick-chips-container">
+                        <span class="chip-quick" onclick="sendQuickQuestion('Kenapa HP saya cepat panas?')">🔥 Kenapa HP cepat panas?</span>
+                        <span class="chip-quick" onclick="sendQuickQuestion('Bagaimana agar HP tidak lag?')">⚡ Mengapa HP bisa lag?</span>
+                        <span class="chip-quick" onclick="sendQuickQuestion('Apakah RAM saya cukup?')">🧠 Kenapa RAM penuh bikin lemot?</span>
+                        <span class="chip-quick" onclick="sendQuickQuestion('Apakah saya perlu reset HP?')">🔄 Kapan sebaiknya reset HP?</span>
+                    </div>
+
+                    <!-- Chat Box -->
+                    <div id="chat-box" class="chat-box">
+                        <div class="chat-msg bot">
+                            Halo! Saya AI Advisor. Hasil analisis teknis Anda sudah tersusun. Ada konsep sistem atau masalah HP yang ingin didiskusikan lebih lanjut?
+                        </div>
+                    </div>
+
+                    <!-- Input Group -->
+                    <form id="chat-form" class="chat-input-group">
+                        <input type="text" id="chat-input" placeholder="Tanyakan seputar istilah teknis HP Anda..." autocomplete="off" required>
+                        <button type="submit" class="btn-send ripple-btn">
+                            <span>Kirim</span>
+                        </button>
+                    </form>
+                </div>
+
+            </section>
+
+            <!-- ========================================== -->
+            <!-- 6. FOOTER                                  -->
+            <!-- ========================================== -->
+            <footer class="app-footer">
+                <p class="footer-title">AI Device Diagnostic & Advisory</p>
+                <p class="footer-version">Version 1.0 • Powered by Gemini AI</p>
+                <p class="footer-credit">Created with ❤️ by <strong>Amaliah</strong></p>
+            </footer>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
