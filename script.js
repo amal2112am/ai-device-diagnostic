@@ -248,6 +248,19 @@ async function generateProfessionalAnalysis(activities, storage, heat, duration)
     }
 }
 
+// Helper Animasi Counter
+function animateCounter(id, start, end, duration) {
+    const obj = document.getElementById(id);
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) window.requestAnimationFrame(step);
+    };
+    window.requestAnimationFrame(step);
+}
+
 // CHATBOT CONSULTANT
 function initChatbot() {
     const chatForm = document.getElementById("chat-form");
