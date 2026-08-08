@@ -132,7 +132,7 @@ function buildPrompt(score, storage, heat, duration, activities) {
   return `Kamu adalah asisten teknis yang menjelaskan hasil diagnosis performa HP ke siswa SMK jurusan Manajemen Perkantoran. Gunakan bahasa Indonesia formal tapi mudah dipahami.
 
 DATA HASIL PEMERIKSAAN (jangan diubah, jangan menambah data yang tidak ada di sini):
-- Skor kesehatan perangkat: ${score} dari 100
+- Skor kesehatan perangkat: ${score} %
 - Sisa penyimpanan internal: ${storage}
 - Kondisi suhu saat pemakaian: ${heat}
 - Lama pemakaian sekali buka: ${duration}
