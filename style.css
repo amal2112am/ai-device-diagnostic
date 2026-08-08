@@ -419,3 +419,46 @@ body {
 .footer-title { font-size: 0.85rem; font-weight: 700; color: #fff; }
 .footer-version { font-size: 0.75rem; color: var(--text-muted); margin: 2px 0 6px; }
 .footer-credit { font-size: 0.75rem; color: var(--primary-blue); }
+
+/* ========================================== */
+/* CHATBOT FLOATING WIDGET                    */
+/* ========================================== */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 210, 255, 0.45);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+.chat-toggle-btn:hover { transform: scale(1.08); }
+.chat-toggle-btn:active { transform: scale(0.95); }
+
+.chatbot-floating-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    max-width: calc(100vw - 40px);
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 999;
+    margin-bottom: 0;
+}
+
+.chatbot-panel-collapsed { display: none; }
+
+@media (max-width: 400px) {
+    .chatbot-floating-panel { right: 10px; bottom: 80px; width: calc(100vw - 20px); }
+    .chat-toggle-btn { right: 10px; bottom: 15px; }
+}

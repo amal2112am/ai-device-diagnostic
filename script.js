@@ -263,6 +263,13 @@ function animateCounter(id, start, end, duration) {
 
 // CHATBOT CONSULTANT
 function initChatbot() {
+    const chatToggleBtn = document.getElementById("chat-toggle-btn");
+    const chatPanel = document.getElementById("chatbot-panel");
+    if (chatToggleBtn && chatPanel) {
+        chatToggleBtn.addEventListener("click", () => {
+            chatPanel.classList.toggle("chatbot-panel-collapsed");
+        });
+    }
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
 
