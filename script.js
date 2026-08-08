@@ -64,6 +64,10 @@ function detectBrowserTelemetry() {
         : "Tidak Diberikan Browser";
         
     document.getElementById("info-connection").innerText = navigator.onLine ? "Terhubung Online" : "Terputus (Offline)";
+    window.deviceContext = {
+        ram: ("deviceMemory" in navigator) ? navigator.deviceMemory : null,
+        cores: ("hardwareConcurrency" in navigator) ? navigator.hardwareConcurrency : null
+    };
 }
 
 // 3. LOGIKA FORM DIAGNOSTIK & PROCESSOR LOADING
@@ -152,6 +156,7 @@ ATURAN:
 // 4. GENERATE EXPERT DIAGNOSTIC REASONING & EDUKASI
 async function generateProfessionalAnalysis(activities, storage, heat, duration) {
     let score = 90;
+    window.lastDiagnostic = { score: null, storage, heat, duration, activities };
 
     // Penilaian berbasis logika teknis
     const isCriticalStorage = storage === "Kurang dari 5 GB";
@@ -167,6 +172,7 @@ async function generateProfessionalAnalysis(activities, storage, heat, duration)
     if (isVideoHeavy && activities.length >= 3) score -= 10;
 
     score = Math.max(score, 35);
+    window.lastDiagnostic.score = score;
 
     // Animasi Hitung Score
     animateCounter("res-score", 0, score, 1000);
@@ -298,7 +304,17 @@ async function processBotResponse(userMsg) {
     chatBox.appendChild(typingDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    const chatPrompt = `Kamu adalah asisten teknis yang menjawab pertanyaan seputar performa HP untuk siswa SMK. Jawab HANYA seputar topik performa perangkat, baterai, penyimpanan, RAM, panas, dan lag. Kalau pertanyaan di luar topik itu, arahkan sopan kembali ke topik performa HP. Jawab dalam 2-4 kalimat, bahasa Indonesia formal tapi mudah dipahami, tanpa kalimat pembuka seperti "Tentu,...". Jangan pakai format JSON, balas teks biasa saja.
+    const ctx = window.lastDiagnostic || {};
+    const dev = window.deviceContext || {};
+    const chatPrompt = `Kamu adalah asisten teknis yang menjawab pertanyaan seputar performa HP. Jawab HANYA seputar topik performa perangkat, baterai, penyimpanan, RAM, panas, dan lag. Kalau pertanyaan di luar topik itu, arahkan sopan kembali ke topik performa HP. Jawab dalam 2-4 kalimat, bahasa Indonesia formal tapi mudah dipahami, tanpa kalimat pembuka seperti "Tentu,...". Jangan pakai format JSON, balas teks biasa saja.
+
+KONTEKS PERANGKAT PENGGUNA (WAJIB dipakai untuk personalisasi jawaban, jangan mengarang data di luar ini):
+- RAM terdeteksi browser: ${dev.ram ? dev.ram + " GB (estimasi)" : "tidak terdeteksi oleh browser ini"}
+- Jumlah CPU core: ${dev.cores ? dev.cores + " core" : "tidak terdeteksi"}
+- Skor kesehatan dari hasil diagnosis terakhir: ${ctx.score !== undefined ? ctx.score + "%" : "belum ada hasil diagnosis"}
+- Sisa penyimpanan yang dilaporkan: ${ctx.storage || "tidak diketahui"}
+
+Kalau pengguna bertanya soal RAM/penyimpanan/performa MEREKA SENDIRI, gunakan angka di atas dalam jawaban, jangan kasih jawaban generik yang tidak menyebut data mereka.
 
 Pertanyaan pengguna: "${userMsg}"`;
 
